@@ -21,3 +21,6 @@ jobs:
           context: .
           push: false
           tags: validacion-docker:github
+
+      - name: Comprobar Docker Bake
+        run: docker buildx bake
