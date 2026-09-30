@@ -1,0 +1,23 @@
+name: Validacion de compilacion
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Comprobar compilacion Docker
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: validacion-docker:github
